@@ -1,0 +1,282 @@
+<div class="container">
+    <h2>Proudct Details</h2>
+    <!-- Interpolation uses one-way binding. Any changes in the view will not update back to the model object -->
+    <dl>
+        <dt>Name</dt>
+        <dd>{{product.Name}}</dd>
+        <dt>Price</dt>
+        <dd>{{product.Price}}</dd>
+    </dl>
+    <!-- Attributes = Immutable -> can't be changed, can't be changed(static) : used in a tag-->
+    <!-- Attribute cannot allow its value to change dynamically, thats why we use attribute binding -->
+    <!-- Properties = Mutable -> can be changed dynamically using script, if an attribute is changing means its a property not an attribute -->
+
+    <dl>
+        <dd>
+            <h3>Attribute Binding</h3>
+            Attribute Binding will directly use the values using Interpolation
+            <br>
+            <p> <b>public disableButton = true </b> <br>
+
+            <code ngNonBindable>< button disabled='{{disableButton}}' ></code> 
+
+        </dd>
+        <!-- ie. why it is immutable -->
+    </dl>
+    <button disabled='{{disableButton}}'>Submit</button>
+    
+    <dd>
+        <dl>
+            <h3>Property Binding</h3>
+            <p> public disableButton = true <br>
+                <b>Use [ ] to dynamically bind the attributes with the property. </b>   <br> 
+                [disabled] = 'disableButton' <br>
+                <b>NOTE:</b> When the attribute starts accepting dynamic values. It is no loger stays static. So, it becomes a property.
+            </p>
+        </dl>
+    </dd>
+    <button [disabled]='!disableButton'>Submit</button>
+</div>
+<br>
+<div class="container">
+    <dd>
+        <dl>
+            <b>
+                Every HTML attirbute is not having a relative property to handle dynamically. You have to use attribute as property binding with "attr" as prefix.
+            </b>
+        </dl>
+        <dl>Syntax:</dl>
+        <dl ngNonBindable> <b>[attr.attributeName]="dynamicReference" </b>  </dl>
+    </dd>
+    <p>Eg: <b>attr.height</b> is used instead of the <b>height</b> attribute: [width]="tableWidth" [attr.height]="tableHeight"</p>
+    <table border="1" [width]="tableWidth" [attr.height]="tableHeight" >
+        <tr>
+            <td>Name</td>
+            <td>Price</td>
+        </tr>
+    </table>
+    <div>
+        <h3>Two Way Binding</h3>
+        <p>
+            For two way binding we need:
+            <ol>
+                <li>
+                    The data by using property binding: [ ]
+                </li>
+                <li>
+                    It uses the Event to compare and update the data-value that we have fetched using property binding in the view/html-template
+                </li>
+            </ol>
+            
+             
+    </div>
+    <div>
+        <h5>Event Binding: (click) = "showAlert()"</h5>
+    </div>
+    <button (click)="showAlert()">Alert</button>
+    <div>
+        <p ngNonBindable>In MVC Framework, Model is having the value. 
+            To accesss the value we have to use <b>ngModel</b> which will use both property and event binding.
+            Hence, it is called 2 way binding.<br>
+            <b>Syntax</b> = [(ngModel)]
+            <br>
+             
+        </p>
+        <h4>Breakdown of <b>[(ngModle)]</b></h4>
+        <ul>
+            <li>
+                [ ] --> Represents Property Binding
+                
+            </li>
+            <li>
+                ( ) --> Represents Event Binding. ie. <b>(change)</b> event is being used to compare the values.
+            </li>
+        </ul>
+        <p>
+            <b>NOTE:</b> ngModel is also called as a <b>Directive</b>. As it has
+            the ability to change the html elements dynamically. 
+        </p>
+        <p>ngModel is not available in the @angular/core library, to use ngModel we have to import <b>FormsModule from '@angular/forms'
+            <br>
+            Add FormModel in the imports: array metadeta. 
+        </b>  </p>
+    </div>
+    <div>
+        <ul>
+            <li>
+                <b>ngModel</b> is a directive responsible for handling two-way binding.
+            </li>
+            <li>It uses "Property and Event" binding Technique.</li>
+            <li>Property Binding is used to bind the model value.</li>
+            <li>Event Binding is used to update the changes.</li>
+            <li>[ ] defines property binding.</li>
+            <li>( ) defines event binding. </li>
+            <li>[(ngModel)] two-way binding.</li>
+            <li><b>ngModel is a member of "FormModel" present in "@angular/forms" library</b></li>
+        </ul>
+
+        <div>
+            <h3>Directives</h3>
+            <div>
+                <ul>
+                    <li>Directive is technically a function</li>
+                    <li>Directive is responsible for converting the static DOM element into dynamic DOM</li>
+                    <li>Directive makes HTML more declarative.</li>
+                    <li>It extends HTML. <br>
+                        <code>
+                            < input type="text" [(ngModel)] >
+                        </code>
+                    </li>
+                    <li>
+                        Directive have different types of functionalities, they can be used as:
+                        <ul>
+                            <li>Element:
+                                <br>
+                                <p>
+                                    Directive are used as elements to return markup. <br>
+                                    <code>< ng-form > < /ng-form >></code>
+                                    <code>< router-outlet > < /router-outlet >></code>
+
+                                </p>
+                            </li>
+                            <li>Attribute:
+                                <p>
+                                    Directives are used as attributes to extend HTML. <br>
+                                    <code> < input type="text" ngModel #txtName="ngModel" >  </code>
+                                </p>
+                            </li>
+                            <li>Class:
+                                <p>
+                                    Directives are used as Classes to make the markup more interactive.
+                                    <code>
+                                        < span class="ng-valid"> < /span> <br>
+                                        < span class="ng-pristine"> < /span>
+
+                                    </code>
+                                </p>
+                            </li>
+                            <li>Comment:
+                                <p>
+                                    Directives are used as Comments to target legacy browser. <br>
+                                    <code>
+                                        < !-- ngModel:txtname --> 
+
+                                        *ignore additional space between tags
+                                    </code>
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>Angular Directive</h3>
+                <div>
+                    <p>Angular Directive are classified into 3 types: </p>
+                    <ul>
+                        <li>Component Directives</li>
+                        <li>Structural Directives</li>
+                        <li>Attribute Directives</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Component Directives</h4>
+                    <hr>
+                    <div>
+                        <ul>
+                            <li>The component directive is the most common directive in Angular.</li>
+                            <li>It is a template that comprises of logic, presentation and styles.</li>
+                            <li>It is used for dynamically rendering HTML and handling interaction with users.</li>
+                        </ul>
+                        <div style="margin-left: 35px;">
+                            <b>Ex.:</b>
+                            <br>
+                            <ul>
+                                <li>logic.component.ts -> logic</li>
+                                <li>logic.component.html -> html</li>
+                                <li>logic.component.style -> style</li>
+                            </ul>
+                            <div ngNonBindable>
+                                <dd>
+                                    <dl>Selector for component directive: <code>< app-comp > < /app-comp ></code>  </dl>
+                                    <dl>- We can access and use built-in components from a library called <b>"Angular Material"</b></dl>
+                                </dd>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div>
+                    <h3>Structural Directive</h3>
+                    <hr>
+                    <div>
+                        <ul>
+                            <li>A structural directive is responsible for changing the DOM structure dynamically.</li>
+                            <li>It can add or remove element, It can iterate over element, it can switch between elements etc.</li>
+                            <li>
+                                Angular Structural directives are:
+                                <ol>
+                                    <li>ngIf</li>
+                                    <li>ngSwitch</li>
+                                    <li>ngFor</li>
+                                </ol>
+                            </li>
+                            <li>Structural Directives are added to HTML DOM element by using '*'
+                                <br>
+                                <ul>
+                                    <li> < div *ngIf="" > </li>
+                                    <li> < div *ngFor="" > </li>
+                                </ul>
+                            </li>
+                            <li>Every HTML element can use only one structural directive.
+                                <ul>
+                                    <li> < li *ngFor="" *ngIf=""> => Invalid, only one structural directive is allowed </li>
+                                </ul>
+                                <br>
+                                <div>
+                                    <h4>NgIf Directive(ngIf)</h4>
+                                    <hr>
+                                    <ul>
+                                        <li>It is a structural directive used to add or remove any DOM elemet dynamically.</li>
+                                        <li>It uses a boolean condition or value to add or remove DOM element.</li>
+                                    </ul>
+                                    <h5>Hide an Image:</h5>
+                                    <div>
+                                        < img style="display:none">
+                                        <br>
+                                        
+                                        <p>This will keep the image in your page DOM but hides in the UI. It will not reduce burden on Page.</p>
+                                        <p>
+                                            <b>Syntax:</b>
+                                            <br>
+                                            < img *ngIf="booleanValue/Expression">
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <div class="h3">ngIf with 'then' and 'else' block</div>
+                        <div>
+                            <p>
+                                if condition then <br>
+                                  statement if true; <br>
+                                else <br>
+                                  statment if false; <br>
+                            </p>
+                            <p><b>Syntax:</b></p>
+                            <dd>
+                                <dl> < div *ngIf="condition; then thenBlockId else elseBlockId">< /div> </dl>
+                                <dl> 
+                                    < ng-template #thenBlockId> content to display when true 
+                                </dl>
+                                <dl> < ng-template #elseBlockId> content to display when false</dl>
+                            </dd>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label for="">
+                    Select a Category
+                </label>
+                <div>
+                    <!-- <select [(ngModel)]="selectedCategoryName" name="" id="" class="form-control">
+                        <option *ngFor="let item of categories">
+                            {{item}}
+                        </option>
+                    </select> -->
+
+                    <!-- using: 'radio' instead of dropdown to select the category -->
+                    <ul class="list-unstyled" style="font-size: 30px;">
+                        <li *ngFor="let item of categories">
+                            <input type="radio" [(ngModel)]="selectedCategoryName" [value]="item">{{item}}
+                        </li>
+
+                    </ul>
+
+                    <button *ngFor="let item of categories" class="btn btn-outline-primary" [name]="item" (click)="MenuSelection($event)">{{item}}</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <ng-container *ngFor='let item of products'>
+                    <!-- To use conditions in an iteration, we use ng-container to handle dynamic values -->
+                    <div class="col" *ngIf="selectedCategoryName=='All'||selectedCategoryName==item.Category">
+                        <div class="card">
+                            <div class="card-header">
+                                {{item.Category}}
+                            </div>
+                            <div class="card-body">
+                                <img [src]="item.Photo" width="150" height="150" [alt]="item.Name">
+                            </div>
+                            <div class="card-footer">
+                                <h3>{{item.Price|currency:'INR'}}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                
+                
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+<div class="container-fluid">
+    <div class="form-group">
+        <label>Choose Category</label>
+        <div>
+            <select (change)="onCategoryChanged()" [(ngModel)]="selectedCategoryName" class="form-control">
+                <option value="All">All [{{allCount}}]</option>
+                <option value="Electronics">Electronics [{{electronicCount}}]</option>
+                <option value="Footwear">Footwear [{{footwearCount}}]</option>
+                <option value="Fashion">Fashion [{{fashionCount}}]</option>
+                
+            </select>
+        </div>
+    </div>
+</div>

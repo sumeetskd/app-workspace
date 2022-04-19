@@ -1,0 +1,17 @@
+<div class="form-group">
+    <div>Select a Category</div>
+    <ul class="list-unstyled">
+        <li>
+            <input (change)="onSelectedCategoryChange()" type="radio" name="filter" value="All" [(ngModel)]="selectedCategoryName"> All[{{allcount}}]
+        </li>
+        <li>
+            <input (change)="onSelectedCategoryChange()" type="radio" name="filter" value="Electronics" [(ngModel)]="selectedCategoryName"> Electronics[{{electronicscount}}]
+        </li>
+        <li>
+            <input (change)="onSelectedCategoryChange()" type="radio" name="filter" value="Footwear" [(ngModel)]="selectedCategoryName"> Footwear[{{footwearcount}}]
+        </li>
+        <li>
+            <input (change)="onSelectedCategoryChange()" type="radio" name="filter" value="Fashion" [(ngModel)]="selectedCategoryName"> Fashion[{{fashioncount}}]
+        </li>
+    </ul>
+</div>

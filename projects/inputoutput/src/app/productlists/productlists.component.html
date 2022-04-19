@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <h2 class="text-center text-primary"><span class="fa fa-shopping-cart"></span>Amazon</h2>
+
+    <div class="row">
+        <div class="col-2" style="margin-top:20px">
+            <app-filter (EmitCategoryName)="onFilterCategoryChange($event)" [allCount]="products.length" [electronicCount]="electronicCount" [footwearCount]="footwearCount" [fashionCount]="fashionCount"></app-filter>
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <ng-container *ngFor="let item of products">
+                    <div class="col" *ngIf="categoryName=='All'|| categoryName==item.Category">
+                        <div class="card" style="width:18rem">
+                            <div class="card-header">
+                                <img [src]="item.Photo" width="100" height="100" alt="item.Name">
+                            </div>
+                            <div class="card-body">
+                                <h3 class="card-title">{{item.Name}}</h3>
+                                <p class="card-subtitle">{{item.Price|currency:'INR'}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

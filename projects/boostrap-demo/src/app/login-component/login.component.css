@@ -1,0 +1,7 @@
+.container-fluid{
+    width: 300px;
+    padding: 30px;
+    justify-content:center;
+    align-items: center;
+    margin:auto;
+}

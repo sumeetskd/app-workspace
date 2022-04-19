@@ -1,0 +1,31 @@
+.errorStyle{
+    border: 2px solid red;
+    box-shadow: 2px 3px 4px red;
+}
+.validStyle{
+    border: 2px solid green;
+    box-shadow: 2px 3px 4px green;
+}
+
+.effects{
+    border: 2px solid darkcyan;
+    box-shadow: 2px 3px 4px darkcyan;
+
+    background-color: yellow;
+
+    text-align: center;
+    padding: 10px;
+}
+.borderEffects{
+    border: 2px solid darkcyan;
+    box-shadow: 2px 3px 4px darkcyan;
+}
+
+.backgroundEffects{
+    background-color: yellow;
+}
+
+.textEffects{
+    text-align: center;
+    padding: 10px;
+}

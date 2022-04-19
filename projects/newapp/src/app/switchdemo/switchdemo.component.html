@@ -1,0 +1,45 @@
+<div class="container-fluid">
+    <h2 class="text-primary text-center"><span class="fa fa-shopping-cart"></span>Amazon</h2>
+    <div class="btn-toolbar bg-danger justify-content-between">
+        <div class="btn-group">
+            <button name="info" class="btn btn-danger" (click)="ChangeView($event)">Basic Details</button>
+            <button name="preview" class="btn btn-danger" (click)="ChangeView($event)">Preview</button>
+            <button name="more" class="btn btn-danger" (click)="ChangeView($event)">More..</button>
+
+        </div>
+        <div class="btn-group ">
+            <button class="btn btn-danger" (click)="PrevClick()" [disabled]="count==0?true:false"><span class="fa fa-circle-left"></span></button>
+            <button class="btn btn-danger" (click)="NextClick()" [disabled]="count==views.length-1?true:false"><span class="fa fa-circle-right"></span></button>
+        </div>
+    </div>
+
+    <div class="row" style="margin-top:20px">
+        <!-- Main Container -->
+        <div [ngSwitch]="selectedView">
+            <!-- info card -->
+            <div class="card" *ngSwitchCase="'info'" style="width:300px;">
+                <div class="card-header">
+                    <h2>{{product.Name}}</h2>
+                </div>
+                <div class="card-body">
+                    <h4>{{product.Price}}</h4>
+                </div>
+            </div>
+            <!-- Preview Card -->
+            <div class="card" *ngSwitchCase="'preview'" style="width:300px">
+                <div class="card-body">
+                    <img [src]="product.Photo" width="200" alt="">
+                </div>
+            </div>
+            <!-- Discription -->
+            <div class="card" *ngSwitchCase="'more'" style="width:300px">
+                <div class="card-header">
+                    <h2>Description</h2>
+                </div>
+                <div class="card-body">
+                    <p>{{product.Description}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

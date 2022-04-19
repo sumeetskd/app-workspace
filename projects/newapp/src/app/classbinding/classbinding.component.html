@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div>
+        <div style="margin: 10px">
+            <!-- <input type="text" class="form-control" [(ngModel)]="effects" placeholder="borderEffects, backgroundEffects, textEffects"> -->
+            <ul class="list-unstyled">
+                <li>
+                    <input type="checkbox" [(ngModel)]="onTextEffect"> Text Effect
+
+                </li>
+                <li>
+                    <input type="checkbox" [(ngModel)]="onBackgroundEffect"> Border Effect
+
+                </li>
+                <li>
+                    <input type="checkbox" [(ngModel)]="onBorderEffect"> Background Effect
+
+                </li>
+            </ul>
+            
+        </div>
+
+        <!-- <h1 [ngClass]="'borderEffects'">Attribute Binding in Angular</h1> -->
+
+        <!-- <h1 [ngClass]="['borderEffects','backgroundEffects','textEffects']">Attribute Binding in Angular</h1> -->
+        
+        <!-- Here when we are entering multiple values in the Input: text, separated by space, it will consider the text as a String Array -->
+    
+        <h1 [ngClass]="{borderEffects:onBorderEffect, backgroundEffects:onBackgroundEffect, textEffects: onTextEffect}">Class Binding in Angular</h1>
+    </div>
+    <div>
+        <div class="form-group">
+            <label for="even">Enter the number to check if it is even:</label>
+            <input type="text" class="form-control" [ngClass]="{'errorStyle':oddStyle,'validStyle':evenStyle}" [(ngModel)]="txtEvent" (blur)="onBlur()">
+        </div>
+    </div>
+</div>

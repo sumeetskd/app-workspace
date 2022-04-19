@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <h2>Register User</h2>
+    <div class="form-group">
+        <label >User Name</label>
+        <div>
+            <input [ngClass]="{errorStyle:isInvalid,validStyle:isValid}" type="text" (keyup)="verfiyUserOnKeyUp()" class="form-control" [(ngModel)]="userName">
+            <span [ngClass]="{'text-success':isValid, 'text-danger':isInvalid}">{{userMsg}}</span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Password</label>
+        <div>
+            <input type="password" [(ngModel)]="password" class="form-control" (keypress)="VerifyPassword($event)">
+            <!-- Character code is only recorgnize on keypress event -->
+            <div *ngIf="showCapsWarning">
+                <span class="fa fa-exclamation-triangle text-warning"></span>
+                <span class="text-warning">Warning CAPS is ON</span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <h2>Register</h2>
+    <div class="form-group">
+        <input [(ngModel)]="txtInput" (cut)="onCut()" (copy)="onCopy()" (paste)="onPaste()" class="form-control" type="text" (focus)="onFocus()" (blur)="onBlur()" placeholder="Enter in block leters">
+        <span [ngStyle]="msgColor">{{msg}}</span>
+    </div>
+
+    <div>
+        <form (submit)="onSubmit()">
+            <button>Submit by Default</button>  
+            <!-- Default=Submit is Generic -->
+            <button type="button">Ordinary Button</button>
+            <select (change)="onChange($event)">
+                <option value="reset">Reset</option>
+                <option value="submit">Submit</option>
+            </select>
+        </form>
+    </div>
+    <div>
+        <h2>Submit Button </h2>
+        <form (submit)="onMultipleSubmit($event)">
+            <button id="insert">Insert</button>
+            <button id="update">Update</button>
+            <button id="delete">Delete</button>
+        </form>
+    </div>
+</div>

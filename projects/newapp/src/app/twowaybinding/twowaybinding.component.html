@@ -1,0 +1,51 @@
+<div class="container">
+    <h3 class="text-center text-primary">Two way Binding Example</h3>
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <div>
+                    <input type="text" class="form-control" name="name" id="name" [(ngModel)]="name">
+                </div>
+            </div>
+            <div class="from-group">
+                <label for="ship">Shipped To:</label>
+                <div>
+                    <select name="ship" id="ship" class="form-control" [(ngModel)]="city">
+                        <option>Delhi</option>
+                        <option >Hydrabad</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="stock">Is in-Stock</label>
+                <div>
+                    <input type="checkbox" name="" id="" [(ngModel)]="inStock"> Yes
+                </div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary btn-block" (click)="UpdateClick()">Update</button>
+            </div>
+        </div>
+        <div class="col-9">
+            <table class="table table-hover">
+                <colgroup span="1" style="background-color:aquamarine"></colgroup>
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td [innerHtml]="product.Name"></td>
+                    </tr>
+                    <tr>
+                        <td>Shipped To</td>
+                        <td>{{product.City}}</td>
+                    </tr>
+                    <tr>
+                        <td>Stock Status</td>
+                        <td>{{product.InStock?'In Stock': 'Out of Stock'}}</td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</div>

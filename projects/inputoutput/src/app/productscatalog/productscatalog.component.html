@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <h2 class="text-primary text-center">Product Catalog</h2>
+    <div class="row">
+        <div class="col-2">
+            <app-productfilter (emitCount)="onCategoryChange($event)" [allcount]="products.length" [electronicscount]="electronicCount" [footwearcount]="footwearCount" [fashioncount]="fashionCount"></app-productfilter>
+            <!-- $event is used to get all the properties that Property Emitter -->
+        </div>
+        <div class="col-10">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <!-- <th>Category</th> -->
+
+                        <th>Photo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <ng-container *ngFor="let item of products">
+                        <tr *ngIf="categoryName=='All' || categoryName==item.Category">
+                            <td>{{item.Name}}</td>
+                            <td>{{item.Price}}</td>
+                            <!-- <td>{{categoryName}}</td> -->
+                            <td><img [src]="item.Photo" width="50" height="50" alt=""></td>
+                        </tr>
+                    </ng-container>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

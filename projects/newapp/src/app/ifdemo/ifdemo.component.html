@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <h2>Product Details</h2>
+    <div class="row">
+        <div class="col-3">
+            <dl>
+                <dt>Name</dt>
+                <dd>{{product.Name}}</dd>
+                <dt>Price</dt>
+                <dd>{{product.Price}}</dd>
+            </dl>
+            <button class="btn btn-primary" (click)="TogglePreview()">{{showImage?'Hide Image':'Show Image'}}</button>
+        </div>
+        <div class="col-9">
+            <div *ngIf="showImage; then thenBlock else elseBlock"></div>
+            <ng-template #thenBlock>
+                <img [src]="product.Photo" height="" width="300" alt="shoe-image" *ngIf="showImage">
+            </ng-template>
+            <ng-template #elseBlock>
+                <img src="" alt="Click Show Image">
+            </ng-template>
+        </div>
+    </div>
+    
+    <!-- <div class="row">
+        <div>
+            <input type="checkbox" name="stock" id="stock" [(ngModel)]="instock">
+        </div>
+        <div *ngIf="instock; then thenBlock else elseBlock"></div>
+        <ng-template #thenBlock>Available</ng-template>
+        <ng-template #elseBlock>Out of Stock</ng-template>
+    </div> -->
+</div>

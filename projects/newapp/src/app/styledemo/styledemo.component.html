@@ -1,0 +1,45 @@
+<!-- Ex1 -->
+
+<!-- <div (mousemove)="onMouseMove($event)" class="container-fluid">
+    <div style="height: 1000px">
+
+    </div>
+    <img src="assets/india.gif" alt="flag" [ngStyle]="styleObj">
+</div> -->
+
+<!-- Ex2 -->
+<div class="container-fluid">
+    <fieldset>
+        <legend>Choose Effects</legend>
+        <dl style="width: 300px; align-items:center; margin: auto">
+            <dt>Background Color</dt>
+            <dd>
+                <select [(ngModel)]="bgColor" class="form-control">
+                    <option>Red</option>
+                    <option>Yellow</option>
+                    <option>Green</option>
+
+                </select>
+            </dd>
+            <dt>Text Color</dt>
+            <dd>
+                <select [(ngModel)]="forecolor" class="form-control">
+                    <option>White</option>
+                    <option>Yellow</option>
+                    <option>Green</option>
+                </select>
+            </dd>
+            <dt>Text Align</dt>
+            <dd>
+                <input [(ngModel)]="align" type="radio" name="align" value="left"> Left
+                <input [(ngModel)]="align" type="radio" name="align" value="center"> Center
+                <input [(ngModel)]="align" type="radio" name="align" value="right"> Right
+
+            </dd>
+            <button (click)="ApplyStyleChange()" class="btn btn-outline-primary">Apply Effects</button>
+        </dl>
+    </fieldset>
+    <div class="form-group" style="margin: 100px;">
+        <h2 [ngStyle]="styleObj">Sample Text</h2>
+    </div>
+</div>

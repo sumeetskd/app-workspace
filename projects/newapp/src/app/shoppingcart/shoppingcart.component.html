@@ -1,0 +1,79 @@
+<div class="container-fluid">
+    <h2 class="text-center text-primary"><span class="fa fa-shopping-cart"></span>Amazon - Shopping</h2>
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <label for="">Select a Category</label>
+                <div>
+                    <select class="form-control" (click)="onCategoryChange()" [(ngModel)]="selectedCategoryName">
+                        <option *ngFor="let item of categories">
+                            {{item}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Select a Product</label>
+                <div>
+                    <select class="form-control" (click)="onProductChange()" [(ngModel)]="selectedProductName">
+                        <option *ngFor="let item of products">
+                            {{item}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Preview</label>
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-center">{{searchedProduct.Name}}</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <img [src]="searchedProduct.Photo" width="200" height="200">
+                    </div>
+                    <div class="card-footer text-center">
+                        <h3>{{searchedProduct.Price|currency:'INR'}}</h3>
+                        <button (click)="addToCartClick()" class="btn btn-danger btn-block"><span class="fa fa-shopping-cart"></span>Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+
+            <table *ngIf="showCart" class="table table-hover text-center" style="margin:100px;">
+                <caption>Your Cart Items</caption>
+                <thead class="text-center">
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Preview</th>
+                        <th><button (click)="deleteAll()" class="btn btn-outline-danger"><span class="fa fa-trash"></span>Delete All</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of cartItems; let i=index">
+                        <td>{{item.Name}}</td>
+                        <td>{{item.Price}}</td>
+                        <td><img [src]="item.Photo" width="50" height="50" alt="item.Name"></td>
+                        <td><button (click)="deleteCartItem(i)" class="btn btn-outline-danger"><span class="fa fa-trash"></span></button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-3">
+            <div class="d-flex justify-content-end">
+                <button class="btn btn-danger btn-block" (click)="ToogleCartDisplay()"><span class="fa fa-shopping-cart"></span>[{{cartItemsCount}}]Your Cart Items</button>
+            </div>
+            <div class="d-flex justify-content-end">
+                <details>
+                    <summary>
+                        Total Price: {{totalPrice|currency:'INR'}}
+                        
+                    </summary>
+
+                </details>
+                
+            </div>
+        </div>
+    </div>
+</div>

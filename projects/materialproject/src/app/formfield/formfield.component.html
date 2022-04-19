@@ -1,0 +1,26 @@
+<div class="container-fluid">
+    <div class="form-group">
+        <label for="name">User name</label>
+        <div>
+            <input type="text" class="form-control" placeholder="Username">
+        </div>
+    </div>
+    <!-- Input Material -->
+    <mat-form-field appearance="outline">
+        <mat-label>User name</mat-label>
+        <input type="text" [(ngModel)]="username" matInput placeholder="Enter user name">
+    </mat-form-field>
+    <div>
+        <h2>Hello! {{username}}</h2>
+    </div>
+
+    <div>
+        <mat-form-field>
+            <mat-label>Choose Departure Date</mat-label>
+            <!-- Now we need to directives: 1. mat-datepicker=data picker; 2. mat-datepicker-toogle=calender icon as button -->
+            <input [matDatepicker]="picker" matInput>
+            <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+    </div>
+</div>

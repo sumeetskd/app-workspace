@@ -1,0 +1,50 @@
+<div class="container-fluid">
+    <h2>Products Catalog</h2>
+    <div class="card-deck">
+        <div class="card" *ngFor="let item of products">
+            <div class="card-header">
+                <h3>{{item.Name}}</h3>
+            </div>
+            <div class="card-body">
+                <img [src]="item.Photo" alt="" width="200" height="200">
+            </div>
+            <div class="card-footer">
+                <div class="btn-group">
+                    <button (click)="likeCounter(item)" class="btn btn-success">{{item.Likes}} <span class="fa fa-thumbs-up"></span> Likes</button>
+                    <button (click)="dislikeCounter(item)" class="btn btn-danger">{{item.Dislikes}} <span class="fa fa-thumbs-down"></span> Dislikes</button>
+    
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Photos</th>
+                    <th>Likes</th>
+                    <th>Dislikes</th>
+                    <th>First</th>
+                    <th>Last</th>
+                    <th>Even</th>
+                    <th>Odd</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr [class.even]="e" [class.odd]="o" *ngFor="let item of products; let f=first; let l=last; let e=even; let o=odd">
+                    <td>{{item.Name}}</td>
+                    <td><img [src]="item.Photo" [alt]="item.Name" width="50" height="50"></td>
+                    <td>{{item.Likes}}</td>
+                    <td>{{item.Dislikes}}</td>
+                    <td>{{f}}</td>
+                    <td>{{l}}</td>
+                    <td>{{e}}</td>
+                    <td>{{o}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
